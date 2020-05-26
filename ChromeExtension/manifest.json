@@ -1,0 +1,42 @@
+{
+  "manifest_version": 2,
+  "name": "Steam卡包幫手",
+  "description": "幫你從steam賺錢",
+  "version": "0.0.1",
+  "icons": {
+  	"128": "128.png"
+  },
+  "permissions": [
+    "activeTab",
+    "https://store.steampowered.com/*",
+    "https://steamcommunity.com/market/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "https://store.steampowered.com/app/*"
+        
+      ],
+      "js": [
+        "StorePageContent.js"
+      ]
+    }
+  ],
+  "background":{
+  	"scripts":["background.js"],
+  	"persistent":false
+  },
+  "browser_action":{
+  	"default_popup":"popup.html",
+  	"default_icon":"128.png"
+  },
+  "commands":{
+  	"_execute_browser_action":{
+  		"suggested_key":{
+  			"default":"Ctrl+Q",
+  			"mac":"MacCtrl+Q"
+  		},
+  		"description":"Run Card Query"
+  	}
+  }
+}

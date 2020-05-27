@@ -8,7 +8,7 @@ function GetAppIDFromUrl( url )
 function click_cal_price(appid ){
 chrome.runtime.sendMessage({'appid':appid},function(response){
     console.log(response);
-    var URL =  'https://steamcommunity.com/market/search?category_753_Game%5B%5D=tag_app_'+appid.toString()+'&category_753_cardborder%5B%5D=tag_cardborder_0&category_753_item_class%5B%5D=tag_item_class_2&appid=753'
+    let URL =  'https://steamcommunity.com/market/search?category_753_Game%5B%5D=tag_app_'+appid.toString()+'&category_753_cardborder%5B%5D=tag_cardborder_0&category_753_item_class%5B%5D=tag_item_class_2&appid=753'
     window.open(URL);
 
 });
@@ -16,16 +16,16 @@ chrome.runtime.sendMessage({'appid':appid},function(response){
 
 function storeButtonInject() {
 	//Get APPID
-    var url = window.location.href;
+    let url = window.location.href;
     console.log('Mine');
     console.log(url);
-    var appid=GetAppIDFromUrl(url);
+    let appid=GetAppIDFromUrl(url);
     console.log(appid);
 
     //Add Appid Button in queue
-    var queue = document.getElementsByClassName('queue_actions_ctn')[0];
-    var outer_div = document.createElement('div');
-    var inner_div = document.createElement('div');
+    let queue = document.getElementsByClassName('queue_actions_ctn')[0];
+    let outer_div = document.createElement('div');
+    let inner_div = document.createElement('div');
     outer_div.append(inner_div);
     queue.append(outer_div);
 

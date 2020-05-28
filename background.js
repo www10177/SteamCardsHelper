@@ -1,4 +1,4 @@
-function parseJSON(json){
+function parseCardJson(json){
     //parse JSON data from steam market API
             console.log(json)
             let results = json['results'];
@@ -15,12 +15,17 @@ function parseJSON(json){
             }
             return {'total_count':total_count,'prices':prices,'qtys':qtys,'currency_text':currency_text,'names':names};
     }
-function getJSON(response){
+function getJson(response){
     // Get JSON from reponse and check if response is OK
     console.log(response.url)
     if( response.ok  ){   
         return response.json();
     }
+}
+
+function parseGemJson(json){
+    let gem_price = parseInt(json['lowest_sell_order'],10)/100;
+    return {'gem_price':gem_price};
 }
 
 function cardPriceCalculator(request,sender,callback) {
@@ -29,18 +34,39 @@ function cardPriceCalculator(request,sender,callback) {
     console.log(appid);
 
     //let URL =  'https://steamcommunity.com/market/search?category_753_Game%5B%5D=tag_app_'+appid.toString()+'&category_753_cardborder%5B%5D=tag_cardborder_0&category_753_item_class%5B%5D=tag_item_class_2&appid=753'
+    const gem_url ='https://steamcommunity.com/market/itemordershistogram?country=TW&language=tchinese&currency=30&item_nameid=26463978'
     let URL = 'https://steamcommunity.com/market/search/render/?query=&start=0&count=30&norender=1&search_descriptions=0&sort_column=popular&sort_dir=desc&appid=753&category_753_Game%5B%5D=tag_app_'+appid.toString()+'&category_753_cardborder%5B%5D=tag_cardborder_0&category_753_item_class%5B%5D=tag_item_class_2'
-    fetch(URL,{method:'GET'})
-    .then(getJSON)
-    .then(parseJSON)
-    .then(res =>callback(res))
+    const card_fetch= fetch(URL,{method:'GET'})
+    .then(getJson)
+    .then(parseCardJson)
     .catch(function(e){
         console.log(e.message);
-        callback({'total_count':-1,'prices':[],'qtys':[],'currency_text':[],'names':[]});
-
+        return {'total_count':-1,'prices':[],'qtys':[],'currency_text':'','names':[]};
+    });
+    
+    const gem_fetch =fetch(gem_url, {method:'GET'})
+    .then(getJson)
+    .then(parseGemJson)
+    .catch(function(e){
+        console.log(e.message);
+        return {'gem_price':-1};
+    });
+    Promise.all([card_fetch,gem_fetch])
+    .then(function (results){
+        let result = results[0];
+        console.log(results[1]);
+        result['gem_price'] = results[1]['gem_price'];
+        console.log(result);
+        callback(result);
+    })
+    .catch(function(e){
+        console.log(e.message);
+        return {'total_count':-1,'prices':[],'qtys':[],'currency_text':'','names':[],'gem_price':-1};
     });
     return true;
+    
 }
 
-
+~function listener(){
 chrome.runtime.onMessage.addListener(cardPriceCalculator);
+}();

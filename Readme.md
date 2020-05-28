@@ -9,9 +9,7 @@
 
 
 ## TODO 
- - [ ] >10張卡片, market price
  - [ ] 自動合卡
- - [ ] change XHR to Fetch
 
 ## Issues
- - Only TWD is fully supported now
+ - Only TWD is fully supported now, other currency will use **TWD GEM Price without conversion**  

@@ -1,4 +1,4 @@
 ## TODO 
- - [ ] >10張卡片, market price
+ - [x] >10張卡片, market price
  - [ ] 自動合卡
- - [ ] change XHR to Fetch
+ - [x] change XHR to Fetch

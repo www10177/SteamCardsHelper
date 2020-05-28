@@ -54,7 +54,7 @@ chrome.runtime.sendMessage({'appid':appid},function(response){
 });
 }
 
-function storeButtonInject() {
+function injectStoreButton() {
 	//Get APPID
     let url = window.location.href;
     console.log('Mine');
@@ -78,4 +78,6 @@ function storeButtonInject() {
     outer_div.addEventListener('click',function() {click_cal_price(appid);});
 };
 
-document.addEventListener("DOMContentLoaded",storeButtonInject());
+~function Main(){
+document.addEventListener("DOMContentLoaded",injectStoreButton());
+}();

@@ -36,7 +36,7 @@ function cardPriceCalculator(request,sender,callback) {
     .then(res =>callback(res))
     .catch(function(e){
         console.log(e.message);
-        callback({'total_count':-1,'prices':[],'qtys':[],'currency':-2});
+        callback({'total_count':-1,'prices':[],'qtys':[],'currency_text':[],'names':[]});
 
     });
     return true;

@@ -1,3 +1,5 @@
+## Installtaion 
+[Chrome  Store](https://chrome.google.com/webstore/detail/steam-cards-helper/fcjodomkmeimmpmhlnnpgjfjlpbnmohd)  
 ## Disclaimer  
 合卡行為有賺有賠(?)，請自行評估風險。  
 本擴充套件所提供的資訊並一定正確，進行任何操作前請再自行確認。

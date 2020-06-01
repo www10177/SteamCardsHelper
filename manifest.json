@@ -7,7 +7,6 @@
   	"128": "128.png"
   },
   "permissions": [
-    "activeTab",
     "https://store.steampowered.com/*",
     "https://steamcommunity.com/*"
   ],

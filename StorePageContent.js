@@ -35,7 +35,7 @@ chrome.runtime.sendMessage({'appid':appid},function(response){
         let text = "卡片數量："+amount ;
         node = append_newline(node,text);
 
-        let gem_cost_dict = {15:400,13:462,11:545,10:600,9:667, 8:750,7:857,6:1000,5:1200};
+        let gem_cost_dict = {15:400,13:462,12:500, 11:545,10:600,9:667, 8:750,7:857,6:1000,5:1200};
         let gem_cost = amount in gem_cost_dict ? gem_cost_dict[amount] : 0;
         text = "所需寶珠數量："+gem_cost;
         node = append_newline(node,text);

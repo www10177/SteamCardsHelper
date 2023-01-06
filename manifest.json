@@ -2,7 +2,7 @@
   "manifest_version": 2,
   "name": "Steam Cards Helper",
   "description": "協助計算Steam合卡獲利的擴充套件",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "icons": {
   	"128": "128.png"
   },

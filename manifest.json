@@ -1,12 +1,12 @@
 {
-  "manifest_version": 2,
+  "manifest_version": 3,
   "name": "Steam Cards Helper",
   "description": "協助計算Steam合卡獲利的擴充套件",
   "version": "0.1.1",
   "icons": {
-  	"128": "128.png"
+    "128": "128.png"
   },
-  "permissions": [
+  "host_permissions": [
     "https://store.steampowered.com/*",
     "https://steamcommunity.com/*"
   ],
@@ -14,20 +14,14 @@
     {
       "matches": [
         "https://store.steampowered.com/app/*"
-        
       ],
       "js": [
         "StorePageContent.js"
       ]
     }
   ],
-  "background":{
-  	"scripts":["background.js"],
-  	"persistent":false
-  },
-  "browser_action":{
-  	"default_popup":"popup.html",
-  	"default_icon":"128.png"
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
   }
-
 }

@@ -30,7 +30,7 @@ function parseGemJson(json){
 
 function cardPriceCalculator(request,sender,callback) {
     // request = {"appid"}
-    appid=request.appid
+    let appid=request.appid
     console.log(appid);
 
     //let URL =  'https://steamcommunity.com/market/search?category_753_Game%5B%5D=tag_app_'+appid.toString()+'&category_753_cardborder%5B%5D=tag_cardborder_0&category_753_item_class%5B%5D=tag_item_class_2&appid=753'
